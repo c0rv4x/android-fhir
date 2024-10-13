@@ -44,7 +44,10 @@ concurrency:
 jobs:
   # Build will compile APK, test APK and run tests, lint, etc.
   build:
-    runs-on: ubuntu-22.04-8core
+    runs-on: self-hosted
+    container:
+      image: ubuntu:22.04  # Specify the Docker image here
+      options: --security-opt=no-new-privileges  # Optional: Add additional Docker security options
     timeout-minutes: 60
     permissions:
       actions: read
